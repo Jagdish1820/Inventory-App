@@ -1,11 +1,11 @@
-import path from 'path';
-import ProductModel from '../models/product.model.js';
+import path from 'path'
+import ProductModel from '../models/product.model.js'
 
 export default class ProductController {
 
     getProducts(req, res) {
         let products = ProductModel.get()
-        console.log(products)
+        console.log(products);
 
         // // console.log(path.resolve());
         // return res.sendFile(path.join(path.resolve(),"src",'views',"products.html" ));
@@ -20,8 +20,9 @@ export default class ProductController {
     addNewProduct(req, res) {
         //access data from form.
         console.log(req.body);
-        let products = ProductModel.get()
-        res.render('products', { products: products })
+        ProductModel.add(req.body);
+        let products = ProductModel.get();
+        return res.render('products', { products: products });
     }
 
 }
