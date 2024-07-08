@@ -18,10 +18,14 @@ app.set(
 );
 
 app.get('/', productsController.getProducts);
+
 app.get(
     '/add-product',
     productsController.getAddProduct
 );
+
+app.get('/update-product', productsController.getUpdateProductView);
+
 app.post('/', validationMiddleware, productsController.postAddProduct);
 
 app.listen(3000, () => {
