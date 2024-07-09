@@ -1,4 +1,3 @@
-
 function deleteProduct(id) {
     const result = confirm('Are you sure you want to delete this product ?');
     if (result) {
