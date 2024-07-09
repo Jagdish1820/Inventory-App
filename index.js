@@ -33,8 +33,8 @@ app.get('/update-product/:id',
 app.post('/delete-product/:id',
     productsController.deleteProduct);
 
-app.post('/', validationMiddleware,
-    uploadFile.single('imageUrl'),
+app.post('/', uploadFile.single('imageUrl'),
+    validationMiddleware,
     productsController.postAddProduct);
 
 app.post('/update-product',

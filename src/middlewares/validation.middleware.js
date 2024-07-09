@@ -26,12 +26,17 @@ const validateRequest = async (req, res, next) => {
     const rules = [
         body('name').notEmpty().withMessage('Name is required'),
         body('price').isFloat({ gt: 0 }).withMessage('Price should be a positive value'),
-        // body('imageUrl').isURL().withMessage('Invalid url'),
+        body('imageUrl').custom((value, { req }) => {
+            if (!req.file) {
+                throw new Error('Image is required');
+            }
+            return true;
+        }),
     ];
 
     // 2. run those rules.
     await Promise.all(rules.map(rule => rule.run(req)));
-    
+
     // 3. check if there are any errors after running the rules
     var validationErrors = validationResult(req);
 
