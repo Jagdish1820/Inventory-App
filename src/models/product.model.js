@@ -11,11 +11,16 @@ export default class ProductModel {
     return products;
   }
 
-  static update(productObj){
+  static update(productObj) {
     const index = products.findIndex(
       (p) => p.id == productObj.id
     );
     products[index] = productObj;
+  }
+
+  static delete(id) {
+    const index = products.findIndex(p => p.id == id);
+    products.splice(index, 1);
   }
 
   static add(productObj) {
