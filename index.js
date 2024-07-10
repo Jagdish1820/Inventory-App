@@ -24,9 +24,10 @@ app.set(
     path.join(path.resolve(), 'src', 'views')
 );
 
-app.get('/register',
-    userController.getRegister);
-
+app.get('/register', userController.getRegister);
+app.get('/login', userController.getLogin);
+app.post('/login', userController.postLogin);
+app.post('/register', userController.postRegister);
 app.get('/', productsController.getProducts);
 
 app.get(
